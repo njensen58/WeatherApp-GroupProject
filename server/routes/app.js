@@ -34,7 +34,7 @@ userRoutes.put("/:id", (req, res) => {
 userRoutes.delete("/:id", (req, res) => {
     Users.findByIdAndDelete(req.params.id, (err, removedUser) => {
         if (err) return res.status(500).send(err);
-        return res.send(removedUser);
+        return res.status(202).send(removedUser);
     });
 });
 
