@@ -1,24 +1,41 @@
 const express = require("express");
-const app = express();
+const userRoutes = express.Router();
+const Users = require('../models/user');
 
-app.get("/users", (req, res) => {
+userRoutes.get("/", (req, res) => {
+    Users.find((err, users) => {
+        if (err) return res.status(500).send(err);
+        return res.send(users);
+    });
+});
 
-})
+userRoutes.get("/:id", (req, res) => {
+    Users.findById(req.params.id, (err, user) => {
+        if (err) return res.status(500).send(err);
+        return res.send(user);
+    });
+});
 
-app.get("/users/:id", (req, res) => {
+userRoutes.post("/", (req, res) => {
+    const newUser = new Users(req.body);
+    newUser.save(err => {
+        if (err) return res.status(500).send(err);
+        return res.status(201).send(newContact);
+    });
+});
 
-})
+userRoutes.put("/:id", (req, res) => {
+    Users.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedUser) => {
+        if (err) return res.status(500).send(err);
+        return res.send(updatedUser);
+    });
+});
 
-app.post("/users", (req, res) => {
+userRoutes.delete("/:id", (req, res) => {
+    Users.findByIdAndDelete(req.params.id, (err, removedUser) => {
+        if (err) return res.status(500).send(err);
+        return res.send(removedUser);
+    });
+});
 
-})
-
-app.put("/users/:id", (req, res) => {
-
-})
-
-app.delete("/users/:id", (req, res) => {
-
-})
-
-module.exports = app;
+module.exports = userRoutes;
