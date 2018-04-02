@@ -1,0 +1,69 @@
+
+.authContainer {
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.authTitleContainer {
+    grid-column: 2;
+    border: 1px solid #3339;
+    border-radius: 4px;
+}
+
+h3.authLeft,
+h3.authRight {
+    text-align: center;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    padding: 5px;
+    margin: 0;
+}
+
+h3.authLeft {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+h3.authRight {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.signupFormContainer,
+.loginFormContainer {
+    grid-column: 2;
+}
+
+.signupFormContainer form,
+.loginFormContainer form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signupFormContainer form input,
+.loginFormContainer form input {
+    padding: 2px;
+    margin: 10px 2px;
+    outline: none;
+    font-size: 13px;
+    letter-spacing: .5px;
+    font-weight: lighter;
+    -webkit-box-shadow: inset 11px 11px 6px -10.5px rgba(0,0,0,0.62);
+    -moz-box-shadow: inset 11px 11px 6px -10.5px rgba(0,0,0,0.62);
+    box-shadow: inset 11px 11px 6px -10.5px rgba(0,0,0,0.62);
+}
+
+.signupFormContainer form button,
+.loginFormContainer form button {
+    border-radius: 2px;
+    background-color: #4d7b9f;
+    color: white;
+    font-weight: lighter;
+    letter-spacing: .5px;
+    text-align: center;
+    outline: none;
+    padding: 5px 10px;
+    font-size: 13px;
+}
