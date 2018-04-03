@@ -16,6 +16,7 @@ mongoose.connect('mongodb://localhost/weatherGroup', (err) => {
 })
 
 app.use('/auth', require('./routes/auth'))
+app.use('/photo', require('./routes/image'))
 app.use('/api', expressJwt({secret: process.env.SECRET}))
 
 

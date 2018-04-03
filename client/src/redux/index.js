@@ -2,9 +2,11 @@ import { combineReducers, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
 import user from './auth';
+import images from './images';
 
 const rootReducer = combineReducers({
-    user
+    user,
+    images
 })
 
 

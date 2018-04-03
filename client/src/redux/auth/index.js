@@ -7,6 +7,7 @@ authAxios.interceptors.request.use(config => {
     return config;
 })
 
+
 const initialState = {
     user: {
         username: '',
@@ -50,6 +51,7 @@ export function login(credentials){
             })
             .catch(err => {
                 console.error(err);
+                dispatch(signupError("signin", err.response.status))
             })
     }
 }
