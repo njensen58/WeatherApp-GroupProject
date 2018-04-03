@@ -55,7 +55,7 @@ class AuthFormContainer extends React.Component {
             this.props.login(this.state.user).then(() => {
             if(this.props.user.isAuthenticated){
                 this.clearInputs();
-                {this.props.history.push('/')}
+                this.props.history.push('/')
             }
         })
         }
@@ -125,6 +125,7 @@ class AuthFormContainer extends React.Component {
                         value={this.state.user}
                         handleChange={this.handleChange}
                         handleLogin={this.handleLogin}
+                        errMsg={errMsg}
                     />
                 }
             </div>
