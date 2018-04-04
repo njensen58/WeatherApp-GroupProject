@@ -12,7 +12,6 @@ photoRoute.get("/", (req, res) => {
         return {lat: lat, lng: lng}
     }).then(coordinates => {
         axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coordinates.lat},${coordinates.lng}&radius=500&key=${TOKEN}`).then(response => {
-            console.log(response.data.results[0].photos[0])
             let photoRef = response.data.results[0].photos[0].photo_reference;
             return photoRef;
         }).then(photo => {
