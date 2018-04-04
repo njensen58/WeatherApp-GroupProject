@@ -22,18 +22,10 @@ class WeatherDisplay extends React.Component {
     constructor(){
         super();
         this.state = {
-            weatherData: {},
-            city: '',
-            icon: ClearDay
+
         }
         this.getIcon = this.getIcon.bind(this);
-        this.clearInputs = this.clearInputs.bind(this)
-    }
 
-    clearInputs(){
-        this.setState({
-            city: ''
-        })
     }
 
     getIcon() {
@@ -79,11 +71,12 @@ class WeatherDisplay extends React.Component {
             <div>
                 <form onSubmit={this.props.handleSubmit}>
                     <input type="text" name="city" value={this.props.city} onChange={this.props.handleChange} placeholder="Enter City" style={{marginLeft: '40px'}}/>
-                    <button onClick={this.clearInputs}>submit</button>
+                    <button>submit</button>
                 </form>
                 <div>
                     <h1 style={{margin: 0, paddingLeft: '30px'}}>{this.props.current.summary}</h1>
-                    <img src={icon} alt=""/>
+                    <h2 style={{margin: 0, paddingLeft: '30px'}}>{this.props.current.temperature}</h2>
+                    <img src={icon} alt={this.props.current.icon}/>
                 </div>
             </div>
         )

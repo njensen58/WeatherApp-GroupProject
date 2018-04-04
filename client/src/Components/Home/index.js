@@ -58,7 +58,8 @@ class Home extends React.Component {
         })
         this.props.getWeather(this.state.city).then(() => {
             this.setState({
-                weatherData: {currently: this.props.weather.currently}
+                weatherData: {currently: this.props.weather.currently},
+                city: ''
             })
         })
     }
