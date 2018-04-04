@@ -12,7 +12,7 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
-    },
+    },  
     name: {
         type: String
     },
@@ -57,10 +57,6 @@ userSchema.methods.withoutPassword = function(){
 }
 
 
-<<<<<<< HEAD
-const User = mongoose.model("user", UserSchema);
 
-module.exports = User;
-=======
 module.exports = mongoose.model('User', userSchema);
->>>>>>> 5cdd7c2e16ba53a70357cfb30462da3e83d973de
+
