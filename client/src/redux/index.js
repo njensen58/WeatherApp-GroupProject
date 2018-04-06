@@ -3,10 +3,12 @@ import thunk from 'redux-thunk';
 
 import user from './auth';
 import images from './images';
+import weather from './weather';
 
 const rootReducer = combineReducers({
     user,
-    images
+    images,
+    weather
 })
 
 

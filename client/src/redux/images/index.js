@@ -8,7 +8,7 @@ const TOKEN = config.PIC_TOKEN;
 
 export function getImage(city){
     return dispatch => {
-        return imagesAxios.get(`/photo?address=salt+lake+city`).then(response => {
+        return imagesAxios.get(`/photo?address=${city}`).then(response => {
             let image = response.data;
             dispatch({
                 type: "GET_IMAGE",

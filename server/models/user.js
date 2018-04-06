@@ -12,7 +12,7 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
-    },  
+    },
     name: {
         type: String
     },
@@ -22,6 +22,7 @@ const userSchema = new Schema({
         default: false
     }
 });
+
 
 ///////////////////////////////////////////////
 // encrypts password with bcrypt upon signup //
