@@ -17,6 +17,7 @@ const Tornado = require('../../../resources/weatherIcons/Tornado.svg');
 const Hail = require('../../../resources/weatherIcons/Cloud-Hail.svg');
 const Thunderstorm = require('../../../resources/weatherIcons/Cloud-Lightning.svg');
 const LightRain = require('../../../resources/weatherIcons/Cloud-Drizzle-Sun.svg');
+const FarDeg = require('../../../resources/weatherIcons/Degrees-Fahrenheit.svg');
 
 class WeatherDisplay extends React.Component {
     constructor(){
@@ -66,17 +67,36 @@ class WeatherDisplay extends React.Component {
     }
 
     render(){
-        const icon = this.getIcon()
+        const icon = this.getIcon();
+
+        const inputStyle = {
+            width: '80%',
+            padding: '15px 0',
+            textAlign: 'center',
+            borderTopLeftRadius: '5px',
+            border: 'none',
+        }
+
+        const btnStyle = {
+            width: '20%',
+            padding: '15px 0',
+            borderTopRightRadius: '5px',
+            marginBottom: '20%'
+        }
+
         return (
-            <div>
-                <form onSubmit={this.props.handleSubmit}>
-                    <input type="text" name="city" value={this.props.city} onChange={this.props.handleChange} placeholder="Enter City" style={{marginLeft: '40px'}}/>
-                    <button>submit</button>
+            <div className="displayContainer" style={{width: '100%', margin: '0 5px'}}>
+                <form onSubmit={this.props.handleSubmit} className="searchForm">
+                    <div style={{width: '100%'}}>
+                        <input type="text" name="city" value={this.props.city} onChange={this.props.handleChange} placeholder="Enter City" style={inputStyle}/>
+                        <button style={btnStyle}>submit</button>
+                    </div>
                 </form>
                 <div>
-                    <h1 style={{margin: 0, paddingLeft: '30px'}}>{this.props.current.summary}</h1>
-                    <h2 style={{margin: 0, paddingLeft: '30px'}}>{this.props.current.temperature}</h2>
-                    <img src={icon} alt={this.props.current.icon}/>
+                    <h3 style={{margin: 0, paddingLeft: '10%', display: 'inline-block', fontSize: '27px'}}>{this.props.currentCity}</h3> <img src={icon} alt={this.props.current.icon}/>
+                    <h1 style={{margin: 0, paddingLeft: '10%', fontWeight: '400'}}>{this.props.current.summary}</h1>
+                    <h2 style={{margin: 0, paddingLeft: '10%', display: 'inline-block', fontSize: '30px', fontWeight: '400'}}>{this.props.current.temperature}</h2>
+                    <span style={{fontSize: '35px'}}>˚</span><span style={{fontSize: '30px', fontWeight: '500'}}>f</span>
                 </div>
             </div>
         )

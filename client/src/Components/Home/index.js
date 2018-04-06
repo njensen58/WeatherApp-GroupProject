@@ -1,5 +1,6 @@
 import React from 'react';
 import Drawer from './Drawer';
+import Paper from 'material-ui/Paper';
 import {connect} from 'react-redux';
 import {getImage} from '../../redux/images';
 import {getWeather} from '../../redux/weather';
@@ -16,6 +17,7 @@ class Home extends React.Component {
         this.state = {
             image: '',
             city: '',
+            currentCity: 'New York City',
             icon: '',
             weatherData: {
                 currently: {
@@ -30,13 +32,13 @@ class Home extends React.Component {
     }
 
     componentDidMount(){
-        this.props.getImage().then(() => {
+        this.props.getImage('new york city').then(() => {
             this.setState({
                 image: this.props.images.image.image
             })
         });
 
-        this.props.getWeather().then(() => {
+        this.props.getWeather('new york city').then(() => {
             this.setState({
                 weatherData: {currently: this.props.weather.currently}
             })
@@ -53,7 +55,8 @@ class Home extends React.Component {
         e.preventDefault();
         this.props.getImage(this.state.city).then(()=> {
             this.setState({
-                image: this.props.images.image.image
+                image: this.props.images.image.image,
+                currentCity: this.state.city
             })
         })
         this.props.getWeather(this.state.city).then(() => {
@@ -68,27 +71,41 @@ class Home extends React.Component {
     render(){
         const imageContainer = {
             backgroundImage: `url(${this.state.image})`,
-            width: '400px',
-            height: '400px',
+            width: '100%',
+            height: '100vh',
             backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat'
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            padding: '25px 25px 25px 50px'
         }
+
+        const paperStyle = {
+            backgroundColor: '#fff9',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            height: '90vh',
+            borderRadius: '5px'
+        }
+
         return (
             <div>
                 <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
                     <Drawer />
                 </MuiThemeProvider>
                 <div style={imageContainer}>
-
-                </div>
-                <div>
-                    <WeatherDisplay
-                        imageStyle={imageContainer}
-                        current={this.state.weatherData.currently}
-                        city={this.state.city}
-                        handleChange={this.handleChange}
-                        handleSubmit={this.handleSubmit}
-                    />
+                    <MuiThemeProvider>
+                        <Paper zDepth={2} style={paperStyle}>
+                            <WeatherDisplay
+                                imageStyle={imageContainer}
+                                current={this.state.weatherData.currently}
+                                city={this.state.city}
+                                handleChange={this.handleChange}
+                                handleSubmit={this.handleSubmit}
+                                currentCity={this.state.currentCity}
+                            />
+                        </Paper>
+                    </MuiThemeProvider>
                 </div>
             </div>
         )
