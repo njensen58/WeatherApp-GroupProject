@@ -18,6 +18,7 @@ class Home extends React.Component {
             image: '',
             city: '',
             currentCity: 'New York City',
+            isFirstTime: true,
             icon: '',
             weatherData: {
                 currently: {
@@ -31,18 +32,32 @@ class Home extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentDidMount(){
-        this.props.getImage('new york city').then(() => {
-            this.setState({
-                image: this.props.images.image.image
-            })
-        });
 
-        this.props.getWeather('new york city').then(() => {
-            this.setState({
-                weatherData: {currently: this.props.weather.currently}
+
+    componentDidMount(){
+        let defaultCity;
+        if(this.state.isFirstTime){
+            if(this.props.user.location){
+                defaultCity = this.props.user.location;
+                this.setState({
+                    isFirstTime: false,
+                    currentCity: this.props.user.location
+                })
+            } else {
+                defaultCity = 'new york city'
+            }
+            this.props.getImage(`${defaultCity}`).then(() => {
+                this.setState({
+                    image: this.props.images.image.image
+                })
+            });
+
+            this.props.getWeather(`${defaultCity}`).then(() => {
+                this.setState({
+                    weatherData: {currently: this.props.weather.currently}
+                })
             })
-        })
+        }
     }
 
     handleChange(e){
@@ -56,12 +71,12 @@ class Home extends React.Component {
         this.props.getImage(this.state.city).then(()=> {
             this.setState({
                 image: this.props.images.image.image,
-                currentCity: this.state.city
             })
         })
         this.props.getWeather(this.state.city).then(() => {
             this.setState({
                 weatherData: {currently: this.props.weather.currently},
+                currentCity: this.state.city,
                 city: ''
             })
         })

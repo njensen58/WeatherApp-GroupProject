@@ -18,7 +18,7 @@ const initialState = {
         signup: '',
         signin: ''
     },
-    isAuthenticated: false,
+    isAuthenticated: false
 }
 
 
@@ -92,6 +92,11 @@ function reducer(state = initialState, action){
                     signup: '',
                     signin: ''
                 }
+            }
+        case "SAVE_CITY":
+            return {
+                ...state,
+                location: action.location
             }
         case "LOGOUT":
             return initialState

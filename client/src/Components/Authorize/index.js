@@ -55,7 +55,7 @@ class AuthFormContainer extends React.Component {
             this.props.login(this.state.user).then(() => {
             if(this.props.user.isAuthenticated){
                 this.clearInputs();
-                this.props.history.push('/')
+                this.props.history.push('/');
             }
         })
         }
@@ -97,7 +97,7 @@ class AuthFormContainer extends React.Component {
         return (
             <div className="authContainer">
                 <div>
-                    <button onClick={()=>this.props.history.push('/')}>Back</button>
+                    <button onClick={()=>this.props.history.push('/')} style={{padding: '10px', backgroundColor: '#555', color: 'whitesmoke', borderRadius: '4px', marginBottom: '5px', outline: 'none', border: 'none'}}>Back</button>
                 </div>
                 <div className="authTitleContainer">
                 { !this.state.loginToggle ?
