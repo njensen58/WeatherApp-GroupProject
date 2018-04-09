@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {getImage} from '../../../redux/images';
 import {getWeather} from '../../../redux/weather';
+import moment from 'moment';
 const Rain = require('../../../resources/weatherIcons/Cloud-Drizzle.svg');
 const ClearDay = require('../../../resources/weatherIcons/Sun.svg');
 const ClearNight = require('../../../resources/weatherIcons/Moon-Waning-Crescent.svg');
@@ -23,7 +24,6 @@ class WeatherDisplay extends React.Component {
     constructor(){
         super();
         this.state = {
-
         }
         this.getIcon = this.getIcon.bind(this);
 
@@ -87,13 +87,18 @@ class WeatherDisplay extends React.Component {
         return (
             <div className="displayContainer" style={{width: '100%', margin: '0 5px'}}>
                 <form onSubmit={this.props.handleSubmit} className="searchForm">
-                    <div style={{width: '100%'}}>
+                    <div style={{width: '100%', height: '50px'}}>
                         <input type="text" name="city" value={this.props.city} onChange={this.props.handleChange} placeholder="Enter City" style={inputStyle}/>
                         <button style={btnStyle}>submit</button>
                     </div>
                 </form>
+
+                <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                    <p style={{paddingLeft: '10%', width: '200px'}}>{moment().format('MMM Do h:mm a', this.props.current.time)}</p>
+                    <img src={icon} alt={this.props.current.icon} style={{width: '200px'}}/>
+                </div>
                 <div>
-                    <h3 style={{margin: 0, paddingLeft: '10%', display: 'inline-block', fontSize: '27px'}}>{this.props.currentCity}</h3> <img src={icon} alt={this.props.current.icon}/>
+                    <h3 style={{margin: 0, paddingLeft: '10%', display: 'inline-block', fontSize: '27px'}}>{this.props.currentCity}</h3>
                     <h1 style={{margin: 0, paddingLeft: '10%', fontWeight: '400'}}>{this.props.current.summary}</h1>
                     <h2 style={{margin: 0, paddingLeft: '10%', display: 'inline-block', fontSize: '30px', fontWeight: '400'}}>{this.props.current.temperature}</h2>
                     <span style={{fontSize: '35px'}}>˚</span><span style={{fontSize: '30px', fontWeight: '500'}}>f</span>

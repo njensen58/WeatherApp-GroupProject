@@ -1,9 +1,10 @@
 
 .authContainer {
-    display: grid;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     grid-template-columns: 1fr 8fr 1fr;
-    padding: 20px;
-    margin-top: 50px;
+    margin: 50px 20% 0 20%;
 }
 
 .authTitleContainer {
@@ -24,11 +25,13 @@ h3.authRight {
 h3.authLeft {
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
+    font-family: sans-serif;
 }
 
 h3.authRight {
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
+    font-family: sans-serif;
 }
 
 .signupFormContainer,
@@ -53,6 +56,10 @@ h3.authRight {
     -webkit-box-shadow: inset 11px 11px 6px -10.5px rgba(0,0,0,0.62);
     -moz-box-shadow: inset 11px 11px 6px -10.5px rgba(0,0,0,0.62);
     box-shadow: inset 11px 11px 6px -10.5px rgba(0,0,0,0.62);
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
 }
 
 .signupFormContainer form button,
@@ -65,5 +72,35 @@ h3.authRight {
     text-align: center;
     outline: none;
     padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.profileInput {
+    padding: 2px;
+    margin: 10px 2px;
+    outline: none;
     font-size: 13px;
+    letter-spacing: .5px;
+    font-weight: lighter;
+    -webkit-box-shadow: inset 11px 11px 6px -10.5px rgba(0,0,0,0.62);
+    -moz-box-shadow: inset 11px 11px 6px -10.5px rgba(0,0,0,0.62);
+    box-shadow: inset 11px 11px 6px -10.5px rgba(0,0,0,0.62);
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.profileBtn {
+    border-radius: 2px;
+    background-color: #4d7b9f;
+    color: white;
+    font-weight: lighter;
+    letter-spacing: .5px;
+    text-align: center;
+    outline: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
 }
